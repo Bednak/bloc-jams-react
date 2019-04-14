@@ -12,7 +12,7 @@ import React, { Component } from 'react';
             <span className={this.props.isPlaying ? 'icon ion-md-pause' : 'icon ion-md-play'}></span>
           </button>
           <button id="next">
-            <span className="icon ion-md-skip-forward"></span>
+            <span className="icon ion-md-skip-forward" onClick={this.props.handleNextClick}></span>
           </button>
         </section>
         <section id="time-control">
