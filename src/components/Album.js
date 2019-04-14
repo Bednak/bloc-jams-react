@@ -150,16 +150,36 @@ class Album extends Component {
 
   render() {
     return (
-       <section className="album">
-        <section id="album-info">
+       <section className="album" align="center" class="mdl-grid">
+        <section id="album-info" class="mdl-cell mdl-cell--4-col">
+          <div id="album-info" class="mdl-cell mdl-cell--4-col">
           <img id="album-cover-art" src={this.state.album.albumCover} alt={this.state.album.title}/>
-          <div className="album-details">
-            <h1 id="album-title">{this.state.album.title}</h1>
-            <h2 className="artist">{this.state.album.artist}</h2>
-            <div id="release-info">{this.state.album.releaseInfo}</div>
           </div>
         </section>
-        <table id="song-list" align="center" border="thick">
+
+        <div className="album-details" class="mdl-cell mdl-cell--4-col" align="center">
+          <h2 id="album-title">{this.state.album.title}</h2>
+          <h3 className="artist">{this.state.album.artist}</h3>
+          <div id="release-info">{this.state.album.releaseInfo}</div>
+
+          <div class="mdl-cell mdl-cell--6-col">
+          <PlayerBar
+           isPlaying={this.state.isPlaying}
+           volume={this.state.volume}
+           currentSong={this.state.currentSong}
+           currentTime={this.audioElement.currentTime}
+           duration={this.audioElement.duration}
+           handleSongClick={() => this.handleSongClick(this.state.currentSong)}
+           handlePrevClick={() => this.handlePrevClick()}
+           handleNextClick={() => this.handleNextClick()}
+           handleTimeChange={(e) => this.handleTimeChange(e)}
+           handleVolumeChange={(e) => this.handleVolumeChange(e)}
+           formatTime={(e) => this.formatTime(e)}
+          />
+          </div>
+      </div>
+        <div class="mdl-cell mdl-cell--4-col">
+        <table id="song-list" align="center" border="thick" class="mdl-data-table mdl-js-data-table">
            <colgroup>
              <col id="song-number-column" />
              <col id="song-title-column" />
@@ -169,7 +189,7 @@ class Album extends Component {
 
               <tr>
                 <th>#</th>
-                <th>Title</th>
+                <th class="mdl-data-table__cell--non-numeric">Title</th>
                 <th>Duration (M:SS)</th>
               </tr>
 
@@ -177,7 +197,7 @@ class Album extends Component {
 
                   <tr key={index + 1} onClick={() => this.handleSongClick(album)} onMouseEnter={() => this.onMouseEnter(album)} onMouseLeave={() => this.onMouseLeave(album)}>
                   <td>{this.playOrPauseIcon(album, index)}</td>
-                  <td>{album.title}</td>
+                  <td class="mdl-data-table__cell--non-numeric">{album.title}</td>
                   <td>{this.formatTime(album.duration)}</td>
                   </tr>
                 )
@@ -185,19 +205,7 @@ class Album extends Component {
 
            </tbody>
          </table>
-         <PlayerBar
-          isPlaying={this.state.isPlaying}
-          volume={this.state.volume}
-          currentSong={this.state.currentSong}
-          currentTime={this.audioElement.currentTime}
-          duration={this.audioElement.duration}
-          handleSongClick={() => this.handleSongClick(this.state.currentSong)}
-          handlePrevClick={() => this.handlePrevClick()}
-          handleNextClick={() => this.handleNextClick()}
-          handleTimeChange={(e) => this.handleTimeChange(e)}
-          handleVolumeChange={(e) => this.handleVolumeChange(e)}
-          formatTime={(e) => this.formatTime(e)}
-         />
+         </div>
 
        </section>
     );

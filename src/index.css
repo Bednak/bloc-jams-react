@@ -6,9 +6,31 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("/assets/images/blurred_backgrounds/blur_bg_3.jpg");
+  background-size:     cover;                     
+  background-repeat:   no-repeat;
+  background-position: center center;
+
+  color:white;
+
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+
+.landing {
+  color: white
+}
+
+.hero-title {
+    overflow: hidden;
+    width: 100%;
+    margin: 0 auto 0 auto;
+}
+
+#song-list {
+  color:black;
 }
